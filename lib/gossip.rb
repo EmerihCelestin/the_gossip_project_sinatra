@@ -1,6 +1,6 @@
 require 'csv'
 class Gossip
-	
+
 	attr_accessor :author, :content
 
 	def initialize(author,content)  
@@ -20,5 +20,11 @@ class Gossip
 			all_gossips << Gossip.new(csv_line[0], csv_line[1])
 		end
 		return all_gossips
-	end		
+	end	
+
+	def self.find(id)
+		id = id.to_i - 1
+		data = CSV.read("./db/gossip.csv")
+		return data[id]
+	end	
 end	

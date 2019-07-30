@@ -5,11 +5,16 @@
 </head>
 <body>
 <h1>Mon super site gossip , depuis le dossier views! </h1>>
-<% gossips.each do |gossip| %>
-	<p>
-		<%= gossip.author %><br/>
-		<%= gossip.content %>
-	</p>
+	<% id = 1%>
+	<% gossips.each do |gossip| %>
+		<p>
+			<a href="/gossips/<%= id %>">
+				<%= gossip.author %><br/>
+				<%= gossip.content %>
+			</a>
+		</p>
+
+		<% id += 1%>
 	<% end %>
 
 </body>
