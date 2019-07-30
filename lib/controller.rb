@@ -7,6 +7,7 @@ class ApplicationController < Sinatra::Base
 	get '/gossips/new/'do
 		erb :new_gossip
 	end	 
+
 	post '/gossips/new/' do
 		puts "Salut, je suis dans le serveur"
 		puts "Ceci est le contenu du hash params : #{params}"
@@ -16,6 +17,7 @@ class ApplicationController < Sinatra::Base
   	puts "Ça déchire sa mémé, bon allez je m'en vais du serveur, ciao les BGs !"
 		redirect '/' 
 	end
+
 	get '/gossips/:id' do 
 
 	 	data = Gossip.find(params["id"])
@@ -26,5 +28,15 @@ class ApplicationController < Sinatra::Base
 
 	 	erb :show, locals: {gossip: gossip, id: params["id"]}
 	end		
+
+	get '/gossips/:id/edit/' do 
+				erb :edit, locals: {id: params["id"]}
+	end
+	post '/gossips/:id/edit/' do
+		content = params["new_gossip_content"]
+		Gossip.update(params["id"],content)
+		redirect '/'
+	end
+
 
 end
