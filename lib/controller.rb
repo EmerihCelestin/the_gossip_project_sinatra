@@ -16,4 +16,8 @@ class ApplicationController < Sinatra::Base
   	puts "Ça déchire sa mémé, bon allez je m'en vais du serveur, ciao les BGs !"
 		redirect '/' 
 	end
+	get '/gossips/:id' do 
+	 "Hello #{params["id"]}!"
+	end		
+
 end
